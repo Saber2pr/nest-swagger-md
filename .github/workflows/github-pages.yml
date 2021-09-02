@@ -1,9 +1,9 @@
 name: Github Pages
 on:
   workflow_dispatch:
-#   push:
-#     tags:
-#       - 'v*.*.*'
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   Deploy-Pages:
