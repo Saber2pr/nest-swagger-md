@@ -4,7 +4,7 @@
   "description": "create nestjs api markdown docs.",
   "repository": {
     "type": "git",
-    "url": "git+____"
+    "url": "git+https://github.com/Saber2pr/nest-swagger-md.git"
   },
   "author": "saber2pr",
   "license": "ISC",
