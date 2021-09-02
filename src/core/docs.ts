@@ -95,7 +95,7 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
   return output.join('\n');
 };
 
-export async function createDocs(document: OpenAPIObject) {
+export async function createApiMarkdownDocs(document: OpenAPIObject) {
   const apiPaths = Object.keys(document.paths);
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
@@ -144,3 +144,5 @@ export async function createDocs(document: OpenAPIObject) {
     ].join('\n'),
   );
 }
+
+export default createApiMarkdownDocs

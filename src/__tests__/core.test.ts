@@ -1,7 +1,7 @@
-import { createDocs } from ".."
+import { createApiMarkdownDocs } from ".."
 
 describe('Test', () => {
   it('test', () => {
-    expect(typeof createDocs).toBe('function')
+    expect(typeof createApiMarkdownDocs).toBe('function')
   })
 })
