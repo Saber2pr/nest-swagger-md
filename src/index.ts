@@ -1,2 +1,3 @@
-export * from './default'
-export * as default from './default'
+export * from './core'
+import { createApiMarkdownDocs } from './core'
+export default createApiMarkdownDocs
