@@ -18,9 +18,9 @@ const createApiDoc = (
   const item = paths[method];
   if (item) {
     const output = [
-      `### 2.${index + 1} ${item.description ?? name}`,
+      `### 2.${index + 1} ${name}`,
       `* 接口：${method.toUpperCase()} ${name}`,
-      `* 说明：${'待补充'}`,
+      `* 说明：${item.description ?? '待补充'}`,
     ];
     if (method === 'get') {
       if (item.parameters.length) {
