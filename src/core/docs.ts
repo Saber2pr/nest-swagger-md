@@ -96,7 +96,7 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
 };
 
 export async function createApiMarkdownDocs(document: OpenAPIObject) {
-  const apiPaths = Object.keys(document.paths);
+  const apiPaths = Object.keys(document.paths).filter(path => path !== '/')
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
     createApiDoc(
