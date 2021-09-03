@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Saber2pr/nest-swagger-md/compare/v0.0.4...v0.0.5) (2021-09-03)
+
+
+### Bug Fixes
+
+* clear root api ([4372cdf](https://github.com/Saber2pr/nest-swagger-md/commit/4372cdf468a15d09902ff5c20edfeac85ea7bdf0))
+
 ### [0.0.4](https://github.com/Saber2pr/nest-swagger-md/compare/v0.0.3...v0.0.4) (2021-09-02)
 
 
