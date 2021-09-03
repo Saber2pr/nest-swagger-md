@@ -95,7 +95,7 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
   return output.join('\n');
 };
 
-export async function createApiMarkdownDocs(document: OpenAPIObject) {
+export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.md')) {
   const apiPaths = Object.keys(document.paths).filter(path => path !== '/')
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
@@ -134,7 +134,7 @@ export async function createApiMarkdownDocs(document: OpenAPIObject) {
   });
 
   await promisify(writeFile)(
-    join(process.cwd(), 'api.md'),
+    outputFile,
     [
       `## 1. ${document.info.title}`,
       document.info.description,
