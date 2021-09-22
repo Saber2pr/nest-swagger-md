@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/nest-swagger-md",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "create nestjs api markdown docs.",
   "repository": {
     "type": "git",
