@@ -64,6 +64,7 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-kind-icon">Api<wbr>Markdown<wbr>Docs<wbr>Opts</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ApiRestClientOpts.html" class="tsd-kind-icon">Api<wbr>Rest<wbr>Client<wbr>Opts</a></li>
 							</ul>
 						</section>
@@ -91,7 +92,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/2d89f56/src/index.ts#L12">index.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/99bb852/src/index.ts#L12">index.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -114,13 +115,13 @@
 					<a name="createApiMarkdownDocs" class="tsd-anchor"></a>
 					<h3>create<wbr>Api<wbr>Markdown<wbr>Docs</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Api<wbr>Markdown<wbr>Docs<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OpenAPIObject</span>, outputFile<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Api<wbr>Markdown<wbr>Docs<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OpenAPIObject</span>, outputFile<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-signature-type" data-tsd-kind="Interface">ApiMarkdownDocsOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/2d89f56/src/core/docs.ts#L98">core/docs.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/99bb852/src/core/docs.ts#L101">core/docs.ts:101</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -130,6 +131,9 @@
 								</li>
 								<li>
 									<h5>outputFile: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-signature-type" data-tsd-kind="Interface">ApiMarkdownDocsOpts</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -146,7 +150,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/2d89f56/src/core/http.ts#L86">core/http.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/99bb852/src/core/http.ts#L86">core/http.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -169,13 +173,13 @@
 					<a name="default" class="tsd-anchor"></a>
 					<h3>default</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OpenAPIObject</span>, outputFile<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OpenAPIObject</span>, outputFile<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-signature-type" data-tsd-kind="Interface">ApiMarkdownDocsOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/2d89f56/src/core/docs.ts#L98">core/docs.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/Saber2pr/nest-swagger-md/blob/99bb852/src/core/docs.ts#L101">core/docs.ts:101</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -185,6 +189,9 @@
 								</li>
 								<li>
 									<h5>outputFile: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-signature-type" data-tsd-kind="Interface">ApiMarkdownDocsOpts</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -203,6 +210,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ApiMarkdownDocsOpts.html" class="tsd-kind-icon">Api<wbr>Markdown<wbr>Docs<wbr>Opts</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ApiRestClientOpts.html" class="tsd-kind-icon">Api<wbr>Rest<wbr>Client<wbr>Opts</a>
 					</li>
