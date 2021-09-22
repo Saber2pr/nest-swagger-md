@@ -87,38 +87,14 @@ export async function createApiRestClient(document: OpenAPIObject, outputFile = 
   const apiPaths = Object.keys(document.paths)
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
-    createApiDoc(
+    ['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,
       path,
-      'post',
+      method as any,
       document.paths[path],
       output,
       document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'get',
-      document.paths[path],
-      output,
-      document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'put',
-      document.paths[path],
-      output,
-      document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'delete',
-      document.paths[path],
-      output,
-      document.components,
-    );
+    ))
   });
 
   await promisify(writeFile)(

@@ -3,7 +3,7 @@ import { join } from 'path';
 import { promisify } from 'util';
 
 import {
-    ComponentsObject, OpenAPIObject, ParameterObject, PathItemObject, ReferenceObject, SchemaObject
+  ComponentsObject, OpenAPIObject, ParameterObject, PathItemObject, ReferenceObject, SchemaObject
 } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
 
 const createApiDoc = (
@@ -29,9 +29,8 @@ const createApiDoc = (
           item.parameters
             .map((item: ParameterObject) => {
               const paramSchema = item.schema as SchemaObject;
-              return `  - ${item.name}: ${paramSchema.type},${
-                item.required ? ' 必选,' : ''
-              } ${item.description ?? '待补充'}`;
+              return `  - ${item.name}: ${paramSchema.type},${item.required ? ' 必选,' : ''
+                } ${item.description ?? '待补充'}`;
             })
             .join('\n'),
         );
@@ -85,8 +84,7 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
           prop = findRefObj(allRef[0].$ref, dtos);
         }
         output.push(
-          `  - ${paramName}: ${prop.type},${
-            required.includes(paramName) ? ' 必选,' : ''
+          `  - ${paramName}: ${prop.type},${required.includes(paramName) ? ' 必选,' : ''
           } ${prop.description ?? ''}`,
         );
       }
@@ -95,42 +93,23 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
   return output.join('\n');
 };
 
-export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.md')) {
+export interface ApiMarkdownDocsOpts {
+  prefix: string
+}
+
+
+export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.md'), opts?: ApiMarkdownDocsOpts) {
   const apiPaths = Object.keys(document.paths).filter(path => path !== '/')
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
-    createApiDoc(
+    ['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,
-      path,
-      'post',
+      join(path, opts.prefix ?? ''),
+      method as any,
       document.paths[path],
       output,
       document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'get',
-      document.paths[path],
-      output,
-      document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'put',
-      document.paths[path],
-      output,
-      document.components,
-    );
-    createApiDoc(
-      i,
-      path,
-      'delete',
-      document.paths[path],
-      output,
-      document.components,
-    );
+    ))
   });
 
   await promisify(writeFile)(
