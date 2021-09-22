@@ -9,7 +9,7 @@ import { createApiMarkdownDocs, createApiRestClient } from './core';
 export * from './core'
 export default createApiMarkdownDocs
 
-export const createApiDocs = async (document: OpenAPIObject, fileName = 'api', opts: ApiRestClientOpts) => {
+export const createApiDocs = async (document: OpenAPIObject, fileName = 'api', opts?: ApiRestClientOpts) => {
   const dir = dirname(fileName)
   if (!existsSync(dir)) {
     await promisify(mkdir)(dir)
