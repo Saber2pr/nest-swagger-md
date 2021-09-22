@@ -1,3 +1,4 @@
+import { ApiMarkdownDocsOpts } from './core/docs';
 import { ApiRestClientOpts } from './core/http';
 import { promisify } from 'util';
 import { OpenAPIObject } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
@@ -9,11 +10,11 @@ import { createApiMarkdownDocs, createApiRestClient } from './core';
 export * from './core'
 export default createApiMarkdownDocs
 
-export const createApiDocs = async (document: OpenAPIObject, fileName = 'api', opts?: ApiRestClientOpts) => {
+export const createApiDocs = async (document: OpenAPIObject, fileName = 'api', opts?: ApiMarkdownDocsOpts & ApiRestClientOpts) => {
   const dir = dirname(fileName)
   if (!existsSync(dir)) {
     await promisify(mkdir)(dir)
   }
-  await createApiMarkdownDocs(document, `${fileName}.md`)
+  await createApiMarkdownDocs(document, `${fileName}.md`, opts)
   await createApiRestClient(document, `${fileName}.http`, opts)
 }
