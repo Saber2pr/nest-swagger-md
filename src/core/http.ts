@@ -3,7 +3,7 @@ import { join } from 'path';
 import { promisify } from 'util';
 
 import {
-    ComponentsObject, OpenAPIObject, ParameterObject, PathItemObject, ReferenceObject, SchemaObject
+  ComponentsObject, OpenAPIObject, ParameterObject, PathItemObject, ReferenceObject, SchemaObject
 } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
 
 const createApiDoc = (
@@ -21,7 +21,7 @@ const createApiDoc = (
       `### 2.${index + 1} ${item.description ?? '待补充'}`,
       `${method.toUpperCase()} {{base}}${name}${params}`,
     ];
-  
+
     if (method === 'post' || method === 'put' || method === 'delete') {
       output.push(`Content-Type: application/json`, ``)
       const body = item.requestBody;
@@ -31,7 +31,7 @@ const createApiDoc = (
             .schema as ReferenceObject;
           output.push(createBodyDoc(schema.$ref, dtos));
         } else {
-          output.push(JSON.stringify({'ref': body.$ref}, null, 2));
+          output.push(JSON.stringify({ 'ref': body.$ref }, null, 2));
         }
       }
     }
@@ -71,16 +71,19 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
           // @ts-ignore
           prop = findRefObj(allRef[0].$ref, dtos);
         }
-        output[paramName] = `${prop.type},${
-          required.includes(paramName) ? ' 必选,' : ''
-        } ${prop.description ?? ''}`
+        output[paramName] = `${prop.type},${required.includes(paramName) ? ' 必选,' : ''
+          } ${prop.description ?? ''}`
       }
     }
   }
   return JSON.stringify(output, null, 2)
 };
 
-export async function createApiRestClient(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.http')) {
+export interface ApiRestClientOpts {
+  prefix: string
+}
+
+export async function createApiRestClient(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.http'), opts?: ApiRestClientOpts) {
   const apiPaths = Object.keys(document.paths)
   const output: string[] = [];
   apiPaths.forEach((path, i) => {
@@ -126,7 +129,7 @@ export async function createApiRestClient(document: OpenAPIObject, outputFile = 
       ``,
       '## 2. 变量定义',
       ``,
-      `@base=http://localhost:3000/v1`,
+      `@base=${join('http://localhost:3000', opts.prefix ?? '')}`,
       ``,
       '## 3. 接口列表',
       ``,
