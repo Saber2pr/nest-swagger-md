@@ -104,7 +104,7 @@ export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile 
   apiPaths.forEach((path, i) => {
     ['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,
-      join(path, opts?.prefix ?? ''),
+      join(opts?.prefix ?? '', path),
       method as any,
       document.paths[path],
       output,
