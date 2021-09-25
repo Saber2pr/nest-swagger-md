@@ -102,8 +102,8 @@ export interface ApiMarkdownDocsOpts {
 export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.md'), opts?: ApiMarkdownDocsOpts) {
   const apiPaths = Object.keys(document.paths).filter(path => path !== '/')
   const output: string[] = [];
-  opts.filter = opts.filter ?? (_ => true)
-  apiPaths.filter(opts.filter).forEach((path, i) => {
+  const apiFilter = opts?.filter ?? (_ => true)
+  apiPaths.filter(apiFilter).forEach((path, i) => {
     const apiPath = join(opts?.prefix ?? '', path)
     ;['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,

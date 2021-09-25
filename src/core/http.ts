@@ -87,8 +87,8 @@ export interface ApiRestClientOpts {
 export async function createApiRestClient(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.http'), opts?: ApiRestClientOpts) {
   const apiPaths = Object.keys(document.paths)
   const output: string[] = [];
-  opts.filter = opts.filter ?? (_ => true)
-  apiPaths.filter(opts.filter).forEach((path, i) => {
+  const apiFilter = opts?.filter ?? (_ => true)
+  apiPaths.filter(apiFilter).forEach((path, i) => {
     ['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,
       path,
