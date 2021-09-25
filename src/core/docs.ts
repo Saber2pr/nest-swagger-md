@@ -94,17 +94,20 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
 };
 
 export interface ApiMarkdownDocsOpts {
-  prefix: string
+  prefix?: string
+  filter?(path: string): boolean
 }
 
 
 export async function createApiMarkdownDocs(document: OpenAPIObject, outputFile = join(process.cwd(), 'api.md'), opts?: ApiMarkdownDocsOpts) {
   const apiPaths = Object.keys(document.paths).filter(path => path !== '/')
   const output: string[] = [];
-  apiPaths.forEach((path, i) => {
-    ['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
+  opts.filter = opts.filter ?? (_ => true)
+  apiPaths.filter(opts.filter).forEach((path, i) => {
+    const apiPath = join(opts?.prefix ?? '', path)
+    ;['post', 'get', 'put', 'delete'].forEach(method => createApiDoc(
       i,
-      join(opts?.prefix ?? '', path),
+      apiPath,
       method as any,
       document.paths[path],
       output,
