@@ -7,7 +7,7 @@ import { spawn } from 'child_process';
 
 const runScript = (workspace: string, path: string, args: string[]) => {
   return new Promise(resolve => {
-    const task = spawn(`yarn nest start ${path}`, args, {
+    const task = spawn(`yarn nest start`, args, {
       cwd: workspace,
       env: process.env,
       shell: true,
@@ -31,7 +31,7 @@ if(code){
   const newCode = original + ";await createApiDocs(document);"
   if(code.includes(original)){
     const lib = `const {createApiDocs} = require('/usr/local/lib/node_modules/@saber2pr/nest-swagger-md');\n`
-    let newContent = lib + code.replace(original, newCode) + '\nprocess.exit(1);'
+    let newContent = lib + code.replace(original, newCode);
     newContent = newContent.replace(/await app\.listen[\s\S]*?\n/, str => `${str}\napp.close();\n`)
     fs.writeFileSync(entry, newContent)
     runScript(process.cwd(), entry, []).then(() => {
