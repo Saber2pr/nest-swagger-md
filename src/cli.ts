@@ -32,7 +32,7 @@ if(code){
   if(code.includes(original)){
     const lib = `const {createApiDocs} = require('/usr/local/lib/node_modules/@saber2pr/nest-swagger-md');\n`
     let newContent = lib + code.replace(original, newCode);
-    newContent = newContent.replace(/await app\.listen[\s\S]*?\n/, str => `${str}\napp.close();\n`)
+    newContent = newContent.replace(/await app\.listen[\s\S]*?\n/, 'await app.listen(60030, () => process.exit(1));\n')
     fs.writeFileSync(entry, newContent)
     runScript(process.cwd(), entry, []).then(() => {
       fs.writeFileSync(entry, code)
