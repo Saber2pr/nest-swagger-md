@@ -16,7 +16,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "main": "./lib/index.js",
-  "bin": "./lib/cli.js",
+  "bin": {
+    "sa-nest-md": "./lib/cli.js"
+  },
   "scripts": {
     "test": "jest src/__tests__",
     "test:dev": "node lib/test",
