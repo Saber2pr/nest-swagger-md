@@ -26,25 +26,14 @@ try {
   console.log(`Read File Fail: ${entry}`)
 }
 
-const wrap = (str: string) => `\n/// sa replace start\n${str}\n/// sa replace end\n`
-
-const switchContent = (content: string,original: string, newStr: string) => {
-  const injectStr = wrap(newStr)
-  if(content.includes(injectStr)){
-    return content.replace(injectStr, original)
-  }else {
-    return content.replace(original, injectStr)
-  }
-}
-
 if(code){
   const original = "const document = SwaggerModule.createDocument(app, options)"
+  const newCode = original + ";await createApiDocs(document);process.exit(1);"
   if(code.includes(original)){
-    const newCode = code.replace(original, original + ";await createApiDocs(document);process.exit(1);")
     const lib = `import {createApiDocs} from '@saber2pr/nest-swagger-md';\n`
-    fs.writeFileSync(entry, lib + switchContent(code, original, newCode))
+    fs.writeFileSync(entry, lib + code.replace(original, newCode))
     runScript(process.cwd(), entry, []).then(() => {
-      fs.writeFileSync(entry, switchContent(code.replace(lib, ''), original, newCode))
+      fs.writeFileSync(entry, code)
     })
   } else {
     console.log(`Main.ts should contain: \n${original}`)
