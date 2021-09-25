@@ -43,8 +43,9 @@ if(code){
     const newCode = code.replace(original, original + ";await createApiDocs(document);process.exit(1);")
     const lib = `import {createApiDocs} from '@saber2pr/nest-swagger-md';\n`
     fs.writeFileSync(entry, lib + switchContent(code, original, newCode))
-    runScript(process.cwd(), entry, [])
-    fs.writeFileSync(entry, switchContent(code.replace(lib, ''), original, newCode))
+    runScript(process.cwd(), entry, []).then(() => {
+      fs.writeFileSync(entry, switchContent(code.replace(lib, ''), original, newCode))
+    })
   } else {
     console.log(`Main.ts should contain: \n${original}`)
   }
