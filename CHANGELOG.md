@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/Saber2pr/nest-swagger-md/compare/v0.0.13...v0.0.14) (2021-09-25)
+
+
+### Features
+
+* filter ([b98fc57](https://github.com/Saber2pr/nest-swagger-md/commit/b98fc571f659b51d3d8dbdafc5a8f1e4f1339bf6))
+
 ### [0.0.13](https://github.com/Saber2pr/nest-swagger-md/compare/v0.0.12...v0.0.13) (2021-09-22)
 
 ### [0.0.12](https://github.com/Saber2pr/nest-swagger-md/compare/v0.0.11...v0.0.12) (2021-09-22)
