@@ -30,7 +30,7 @@ if(code){
   const original = "const document = SwaggerModule.createDocument(app, options)"
   const newCode = original + ";await createApiDocs(document);process.exit(1);"
   if(code.includes(original)){
-    const lib = `import {createApiDocs} from '@saber2pr/nest-swagger-md';\n`
+    const lib = `const {createApiDocs} = require('/usr/local/lib/node_modules/@saber2pr/nest-swagger-md');\n`
     fs.writeFileSync(entry, lib + code.replace(original, newCode))
     runScript(process.cwd(), entry, []).then(() => {
       fs.writeFileSync(entry, code)

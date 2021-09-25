@@ -18,3 +18,4 @@ export const createApiDocs = async (document: OpenAPIObject, fileName = 'api', o
   await createApiMarkdownDocs(document, `${fileName}.md`, opts)
   await createApiRestClient(document, `${fileName}.http`, opts)
 }
+
