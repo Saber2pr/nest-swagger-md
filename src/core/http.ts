@@ -107,7 +107,7 @@ export async function createApiRestClient(document: OpenAPIObject, outputFile = 
       ``,
       '## 2. 变量定义',
       ``,
-      `@base=${join('http://localhost:3000', opts?.prefix ?? '')}`,
+      `@base=${join('http:\/\/localhost:3000', opts?.prefix ?? '')}`,
       ``,
       '## 3. 接口列表',
       ``,
