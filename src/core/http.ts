@@ -80,6 +80,7 @@ const createBodyDoc = (ref: string, dtos: ComponentsObject) => {
 };
 
 export interface ApiRestClientOpts {
+  baseUrl?: string
   prefix?: string
   filter?(path: string): boolean
 }
@@ -107,7 +108,7 @@ export async function createApiRestClient(document: OpenAPIObject, outputFile = 
       ``,
       '## 2. 变量定义',
       ``,
-      `@base=${join('http:\/\/localhost:3000', opts?.prefix ?? '')}`,
+      `@base=${join(opts?.baseUrl ?? 'http:\/\/localhost:3000', opts?.prefix ?? '')}`,
       ``,
       '## 3. 接口列表',
       ``,
